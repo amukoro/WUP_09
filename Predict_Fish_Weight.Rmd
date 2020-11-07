@@ -172,3 +172,7 @@ The adjusted R-square for this model is 0.9356
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+For the Perchmodel, the best predictors were height and width. 
+For the Smeltmodel, the best predictors were Lenght2 and Width.
+For the Breammodel, the best predictors were Lenght2 and Height.
