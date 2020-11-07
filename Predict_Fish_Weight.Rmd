@@ -58,7 +58,23 @@ summary(Fishies)
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ```{r}
-Perchmodel=lm(Weight~Length2+Width,data=Fishies)
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Fishies,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+```{r}
+Perchmodel=lm(Weight~Height+Width,data=Fishies)
 summary(Perchmodel)
 ```
 
@@ -79,6 +95,22 @@ Fishies = select(Fishies,-Species)
 
 ```{r}
 summary(Fishies)
+```
+
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Fishies,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
@@ -107,13 +139,6 @@ summary(Fishies)
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ```{r}
-Breammodel=lm(Weight~Length2+Width,data=Fishies)
-summary(Breammodel)
-```
-
-The adjusted R-square for this model is 0.9645
-
-```{r}
 library(leaps)
 regsubsets.out <-
     regsubsets(Weight ~ .,
@@ -128,6 +153,15 @@ as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
+
+```{r}
+Breammodel=lm(Weight~Length2+Height,data=Fishies)
+summary(Breammodel)
+```
+
+The adjusted R-square for this model is 0.9356
+
+
 
 
 ## Inferential Results
