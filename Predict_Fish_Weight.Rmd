@@ -63,6 +63,56 @@ summary(Perchmodel)
 ```
 
 
+The adjusted R-square for this model is 0.9341
+
+## Smelt  
+
+```{r}
+Fishies=filter(Fishdata, Species == "Smelt")
+Fishies = select(Fishies,-Species)
+```
+
+  
+<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+### Numerical Descriptive Results
+
+```{r}
+summary(Fishies)
+```
+
+<!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+Smeltmodel=lm(Weight~Length2+Width,data=Fishies)
+summary(Smeltmodel)
+```
+
+The adjusted R-square for Smelt is 0.9645
+
+```{r}
+Fishies=filter(Fishdata, Species == "Bream")
+Fishies = select(Fishies,-Species)
+```
+
+  
+<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+### Numerical Descriptive Results
+
+```{r}
+summary(Fishies)
+```
+
+<!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+Breammodel=lm(Weight~Length2+Width,data=Fishies)
+summary(Breammodel)
+```
+
+The adjusted R-square for this model is 0.9645
+
 ```{r}
 library(leaps)
 regsubsets.out <-
